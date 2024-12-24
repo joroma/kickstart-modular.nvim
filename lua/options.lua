@@ -65,5 +65,12 @@ vim.opt.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+vim.cmd 'set expandtab'
+vim.cmd 'set tabstop=2'
+vim.cmd 'set softtabstop=2'
+vim.cmd 'set shiftwidth=2'
+
+-- Set color scheme
+vim.cmd [[colorscheme everforest]]
 
 -- vim: ts=2 sts=2 sw=2 et
