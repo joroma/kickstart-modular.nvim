@@ -66,6 +66,7 @@ too - it's ignored in the kickstart repo to make maintenance easier, but it's
 [recommmended to track it in version control](https://lazy.folke.io/usage/lockfile).
 
 #### Clone kickstart.nvim
+
 > **NOTE**
 > If following the recommended step above (i.e., forking the repo), replace
 > `joroma` with `<your_github_username>` in the commands below
@@ -82,13 +83,13 @@ git clone https://github.com/joroma/kickstart-modular.nvim.git "${XDG_CONFIG_HOM
 
 If you're using `cmd.exe`:
 
-```
+```bash
 git clone https://github.com/joroma/kickstart.nvim.git "%localappdata%\nvim"
 ```
 
 If you're using `powershell.exe`
 
-```
+```bach
 git clone https://github.com/joroma/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
 ```
 
@@ -108,7 +109,6 @@ current plugin status. Hit `q` to close the window.
 Read through the `init.lua` file in your configuration folder for more
 information about extending and exploring Neovim. That also includes
 examples of adding popularly requested plugins.
-
 
 ### Getting Started
 
