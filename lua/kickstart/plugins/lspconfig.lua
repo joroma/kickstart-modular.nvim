@@ -218,7 +218,11 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        ts_ls = {
+          cmd = { 'typescript-language-server', '--stdio' },
+          filetypes = { 'javascript', 'typescript' },
+          init_options = { hostInfo = 'neovim' },
+        },
         --
 
         lua_ls = {

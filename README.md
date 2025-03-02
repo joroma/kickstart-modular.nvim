@@ -84,13 +84,13 @@ git clone https://github.com/joroma/kickstart-modular.nvim.git "${XDG_CONFIG_HOM
 
 If you're using `cmd.exe`:
 
-```
+```bash
 git clone https://github.com/joroma/kickstart.nvim.git "%localappdata%\nvim"
 ```
 
 If you're using `powershell.exe`
 
-```
+```bach
 git clone https://github.com/joroma/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
 ```
 
@@ -115,7 +115,6 @@ examples of adding popularly requested plugins.
 
 > [!NOTE]
 > For more information about a particular plugin check its repository's documentation.
-
 
 ### Getting Started
 
