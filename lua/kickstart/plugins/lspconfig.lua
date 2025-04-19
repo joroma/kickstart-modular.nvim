@@ -115,11 +115,11 @@ return {
           ---@param bufnr? integer some lsp support methods only in specific files
           ---@return boolean
           local function client_supports_method(client, method, bufnr)
-            if vim.fn.has 'nvim-0.11' == 1 then
-              return client:supports_method(method, bufnr)
-            else
-              return client.supports_method(method, { bufnr = bufnr })
-            end
+            -- if vim.fn.has 'nvim-0.11' == 1 then
+            return client:supports_method(method, bufnr)
+            -- else
+            -- return client.supports_method(method, bufnr)
+            -- end
           end
 
           -- The following two autocommands are used to highlight references of the
@@ -207,6 +207,8 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local mason_packages = vim.fn.stdpath 'data' .. '/mason/packages'
+      local volar_path = mason_packages .. '/vue-language-server/node_modules/@vue/language-server'
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -220,8 +222,17 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {
           cmd = { 'typescript-language-server', '--stdio' },
-          filetypes = { 'javascript', 'typescript' },
-          init_options = { hostInfo = 'neovim' },
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+          init_options = {
+            hostInfo = 'neovim',
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = volar_path,
+                languages = { 'vue' },
+              },
+            },
+          },
         },
         --
 
@@ -235,7 +246,39 @@ return {
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        volar = {
+          filetypes = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
+          root_dir = require('lspconfig').util.root_pattern('vue.config.js', 'vue.config.ts'),
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+          capabilities = capabilities,
+          settings = {
+            typescript = {
+              inlayHits = {
+                enumMemberValues = {
+                  enabled = true,
+                },
+                functionLikeReturnTypes = {
+                  enabled = true,
+                },
+                propertyDeclarationTypes = {
+                  enabled = true,
+                },
+                parameterTypes = {
+                  enabled = true,
+                  suppressWhenArgumentMatchesName = true,
+                },
+                variableTypes = {
+                  enabled = true,
+                },
+              },
             },
           },
         },

@@ -71,6 +71,6 @@ vim.cmd 'set softtabstop=2'
 vim.cmd 'set shiftwidth=2'
 
 -- Set color scheme
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme gruvbox-material]]
 
 -- vim: ts=2 sts=2 sw=2 et
