@@ -222,7 +222,7 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {
           cmd = { 'typescript-language-server', '--stdio' },
-          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
           init_options = {
             hostInfo = 'neovim',
             plugins = {
@@ -230,6 +230,20 @@ return {
                 name = '@vue/typescript-plugin',
                 location = volar_path,
                 languages = { 'vue' },
+              },
+            },
+          },
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
               },
             },
           },
@@ -251,8 +265,9 @@ return {
           },
         },
         volar = {
+          cmd = { 'pnpm', 'vue-language-server', '--stdio' },
           filetypes = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
-          root_dir = require('lspconfig').util.root_pattern('vue.config.js', 'vue.config.ts'),
+          -- root_dir = require('lspconfig').util.root_pattern('vue.config.js', 'vue.config.ts'),
           init_options = {
             vue = {
               hybridMode = false,
@@ -261,7 +276,7 @@ return {
           capabilities = capabilities,
           settings = {
             typescript = {
-              inlayHits = {
+              inlayHints = {
                 enumMemberValues = {
                   enabled = true,
                 },
