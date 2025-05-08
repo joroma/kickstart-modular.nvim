@@ -222,7 +222,7 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {
           cmd = { 'typescript-language-server', '--stdio' },
-          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue' },
+          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
           init_options = {
             hostInfo = 'neovim',
             plugins = {
@@ -233,20 +233,20 @@ return {
               },
             },
           },
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = 'all',
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-          },
+          -- settings = {
+          --   typescript = {
+          --     inlayHints = {
+          --       includeInlayParameterNameHints = 'all',
+          --       includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          --       includeInlayFunctionParameterTypeHints = true,
+          --       includeInlayVariableTypeHints = true,
+          --       includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          --       includeInlayPropertyDeclarationTypeHints = true,
+          --       includeInlayFunctionLikeReturnTypeHints = true,
+          --       includeInlayEnumMemberValueHints = true,
+          --     },
+          --   },
+          -- },
         },
         --
 
@@ -266,7 +266,7 @@ return {
         },
         volar = {
           cmd = { 'pnpm', 'vue-language-server', '--stdio' },
-          filetypes = { 'vue', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'json' },
+          filetypes = { 'vue', 'javascript', 'javascriptreact', 'typescriptreact', 'json' },
           -- root_dir = require('lspconfig').util.root_pattern('vue.config.js', 'vue.config.ts'),
           init_options = {
             vue = {
